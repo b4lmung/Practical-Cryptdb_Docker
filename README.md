@@ -37,7 +37,7 @@ http://docs.docker.com/v1.8/installation/
     sudo docker exec -it **name-of-container** bash
 
     #Example:
-    sudo docker exec -it cryptdb bash
+    sudo docker exec -it cryptdb_v1 bash
 
 
 
