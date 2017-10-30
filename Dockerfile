@@ -44,4 +44,4 @@ command=service mysql start\n\
 
 CMD ["/usr/bin/supervisord"]
 
-EXPOSE 22 3306 3307
+EXPOSE 22 3306 3399
