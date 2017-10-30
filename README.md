@@ -1,6 +1,6 @@
 ##### This project is about investigating the encrypted database [CryptDB](https://css.csail.mit.edu/cryptdb/) developed at MIT in 2011.
-Currently, the most actively maintained cryptDB repository is located at [yiwenshao/Practical-Cryptdb](https://github.com/yiwenshao/Practical-Cryptdb).
-This Dockerfile deploys the project into a runnable docker container.
+* Currently, the most actively maintained cryptDB repository is located at [yiwenshao/Practical-Cryptdb](https://github.com/yiwenshao/Practical-Cryptdb).
+* This Dockerfile deploys the project into a runnable docker container base on Debian Wheezy.
 
 ## How to setup:
 
