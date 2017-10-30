@@ -28,7 +28,7 @@ http://docs.docker.com/v1.8/installation/
     sudo docker run -d --name **name-of-container** -p **port-in**:**port-out** -p **port-in**:**port-out** -e MYSQL_ROOT_PASSWORD='letmein' **name-of-image**:**version**
 
     #Example:
-    sudo docker run -d --name cryptdb_v1 -p 3306:3306 -p 3307:3307 -e MYSQL_ROOT_PASSWORD='letmein' cryptdb:v1
+    sudo docker run -d --name cryptdb_v1 -p 3306:3306 -p 3399:3399 -e MYSQL_ROOT_PASSWORD='letmein' cryptdb:v1
 
 (Important: The password must be 'letmein')
 
