@@ -1,4 +1,4 @@
-FROM debian:wheezy
+FROM ubuntu:16.04
 
 MAINTAINER agribu
 
@@ -21,7 +21,7 @@ RUN echo "mysql-server mysql-server/root_password_again password $MYSQL_PASSWORD
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
 
 RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
-RUN /usr/sbin/mysqld & sleep 10s && echo "GRANT ALL ON *.* TO root@'%' IDENTIFIED BY 'letmein' WITH GRANT OPTION; FLUSH PRIVILEGES" | mysql -uroot -pletmein
+RUN /usr/sbin/mysqld & sleep 10s && echo "GRANT ALL ON *.* TO root@'%' IDENTIFIED BY 'letmein' WITH GRANT OPTION; FLUSH PRIVILEGES"
 
 # Clone project repository
 RUN git clone https://github.com/yiwenshao/Practical-Cryptdb.git /opt/cryptdb
@@ -41,6 +41,8 @@ nodaemon=true\n\
 command=service mysql start\n\
 \n\
 " > /etc/supervisor/conf.d/supervisord.conf
+
+ENV TERM xterm
 
 CMD ["/usr/bin/supervisord"]
 
