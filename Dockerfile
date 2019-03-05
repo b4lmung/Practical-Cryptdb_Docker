@@ -13,7 +13,7 @@ RUN mkdir -p /var/log/supervisor
 RUN echo 'root:root' |chpasswd
 
 # Set Password of MySQL root
-ENV MYSQL_PASSWORD letmein
+ENV MYSQL_PASSWORD mysql
 
 # Install MySQL Server in a Non-Interactive mode. Default root password will be $MYSQL_PASSWORD
 RUN echo "mysql-server mysql-server/root_password password $MYSQL_PASSWORD" | debconf-set-selections
@@ -21,10 +21,12 @@ RUN echo "mysql-server mysql-server/root_password_again password $MYSQL_PASSWORD
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
 
 RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
-RUN /usr/sbin/mysqld & sleep 10s && echo "GRANT ALL ON *.* TO root@'%' IDENTIFIED BY 'letmein' WITH GRANT OPTION; FLUSH PRIVILEGES"
+RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf 
+
+RUN /usr/sbin/mysqld & sleep 10s && echo "GRANT ALL ON *.* TO root@'%' IDENTIFIED BY 'mysql' WITH GRANT OPTION; FLUSH PRIVILEGES"
 
 # Clone project repository
-RUN git clone https://github.com/yiwenshao/Practical-Cryptdb.git /opt/cryptdb
+RUN git clone https://github.com/b4lmung/cryptdb.git /opt/cryptdb
 WORKDIR /opt/cryptdb
 
 # Adding debian compatibility to apt syntax
